@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1>REGISTRATION FORM</h1>
+        </div>
+        <div class="main-section">
+            <form class="form" id="form" onsubmit="return validate()">
+                <div>
+                    <label for="fullname">Full Name</label><br>
+                    <input type="text" id="fullname" placeholder="Enter full name" required autocomplete="off">
+                    <div class="errorClass" id="error-name"></div>
+                </div>
+                <div>
+                    <label for="email">Email I'd</label><br>
+                    <input type="text" id="email" placeholder="Enter email address" required autocomplete="off">
+                    <div class="errorClass" id="error-email"></div>
+                </div>
+                <div>
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" placeholder="Enter password" required>
+                    <div class="errorClass" id="error-pass"></div>
+                </div>
+                <div>
+                    <label for="password">Confirm Password</label><br>
+                    <input type="password" id="c-password" placeholder="Enter password again" required>
+                    <div class="errorClass" id="error-cpass"></div>
+                </div>
+                <label for="birthdate">DOB</label>
+                <input type="date" id="birthdate" name="birthdate"><br><br>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
+                <input type="submit" id="button" value="SUBMIT">
+        
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</script>
+</body>
+</html>
