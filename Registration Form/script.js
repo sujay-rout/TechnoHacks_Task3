@@ -1,45 +1,42 @@
-document.getElementById("form").addEventListener("submit", function (e) {
-    e.preventDefault(); 
-    
-    document.querySelectorAll(".errorClass").forEach(function (element) {
-    element.innerHTML = "";
-    });
-    
-    var fullName = document.getElementById("fullname").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var confirmPassword = document.getElementById("c-password").value;
-    
-    var isValid = true;
-    
-    
-    if (fullName.length < 3) {
-    document.getElementById("error-name").innerHTML = "*Name is too short";
-    isValid = false;
+function validate() {
+    let isValid = true;
+
+    // Clear previous errors
+    document.getElementById('error-name').innerHTML = '';
+    document.getElementById('error-email').innerHTML = '';
+    document.getElementById('error-pass').innerHTML = '';
+    document.getElementById('error-cpass').innerHTML = '';
+
+    // Get form values
+    const fullname = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const confirmPassword = document.getElementById('c-password').value.trim();
+
+    // Validate full name
+    if (fullname === '') {
+        document.getElementById('error-name').innerHTML = 'Full Name is required';
+        isValid = false;
     }
-    
-    var atposition = email.indexOf('@');
-    var dotposition = email.indexOf('.');
-    if (atposition < 1 || dotposition < atposition+2 || dotposition +2 >= email.length) {
-    document.getElementById("error-email").innerHTML = "*Email must be valid and contain '@' and '.'";
-    isValid = false;
+
+    // Validate email
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+        document.getElementById('error-email').innerHTML = 'Invalid Email';
+        isValid = false;
     }
-    
-    
+
+    // Validate password
     if (password.length < 6) {
-    document.getElementById("error-pass").innerHTML = "*Password should be at least 6 characters long";
-    isValid = false;
+        document.getElementById('error-pass').innerHTML = 'Password must be at least 6 characters';
+        isValid = false;
     }
-    
-    
-    if (confirmPassword !== password) {
-    document.getElementById("error-cpass").innerHTML = "*Passwords do not match";
-    isValid = false;
+
+    // Validate confirm password
+    if (password !== confirmPassword) {
+        document.getElementById('error-cpass').innerHTML = 'Passwords do not match';
+        isValid = false;
     }
-    
-    if (isValid) {
-    
-    alert("Form submitted successfully!");
-    
-    }
-    });
+
+    return isValid;
+}
